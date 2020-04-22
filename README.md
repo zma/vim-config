@@ -20,11 +20,9 @@ Then install plugins by
 
     vim +PluginInstall
 
-You will need to install `ruby` needed by LustyJuggler.
-
 ### Additional configurations
 
-YouCompleteMe needs pre compilation. Make sure you have `python-devel g++` and other needed packages installed. You need to install Go 1.11+ (one tutorial for Ubuntu 18.04 - https://www.systutorials.com/how-to-install-go-1-13-x-on-ubuntu-18-04/ ). 
+YouCompleteMe needs pre compilation. Make sure you have `python-devel g++` and other needed packages installed. You need to install Go 1.11+ (one tutorial for Ubuntu 18.04 - https://www.systutorials.com/how-to-install-go-1-13-x-on-ubuntu-18-04/ ).
 
 Then, build YouCompleteMe by
 

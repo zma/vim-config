@@ -32,7 +32,8 @@ Plugin 'The-NERD-tree'
 
 Plugin 'omlet.vim'
 Plugin 'TinyBufferExplorer'
-Plugin 'LustyJuggler'
+" Plugin 'LustyJuggler'
+Plugin 'minibufexpl.vim'
 Plugin 'Cpp11-Syntax-Support'
 
 " plugins from github
@@ -122,6 +123,9 @@ set history=5120
 
 " display incomplete commands
 " set showcmd
+
+" backspace problem fix
+set backspace=indent,eol,start
 
 " good for Chinese charactor
 set fileencodings=utf-8,gbk,ucs-bom,latin1
@@ -563,6 +567,11 @@ function FT_cpp()
   setlocal comments-=:// comments+=f://
   setlocal textwidth=80
   setlocal colorcolumn=80
+
+  setlocal tabstop=3
+  setlocal shiftwidth=3
+  setlocal softtabstop=3
+
   setlocal autoindent
   setlocal cindent
   setlocal nospell
