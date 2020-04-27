@@ -1,5 +1,5 @@
 " ~/.vimrc
-" Eric Zhiqiang Ma, http://www.ericzma.com
+" Eric Ma, https://www.ericzma.com
 
 " Note: Set up Vundle first
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -15,28 +15,22 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " plugins
-" Note: remember to run
-" cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
-Plugin 'Valloric/YouCompleteMe'
 
 " plugins from http://vim-scripts.org/vim/scripts.html
 Plugin 'AutoTag'
-" Plugin 'google.vim'
 Plugin 'Syntastic'
 Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'
-" Conflict with YouCompleteMe
-" Plugin 'snipMate'
-" Plugin 'vim-scala'
-" Plugin 'vim-addon-sbt'
 
+" Plugin 'TinyBufferExplorer'
 Plugin 'omlet.vim'
-Plugin 'TinyBufferExplorer'
-" Plugin 'LustyJuggler'
 Plugin 'minibufexpl.vim'
 Plugin 'Cpp11-Syntax-Support'
 
 " plugins from github
+" AI based code autocompletion
+Plugin 'zxqfl/tabnine-vim'
+
 Plugin 'jpalardy/vim-slime'
 " Plugin 'jistr/vim-nerdtree-tabs'
 
@@ -118,6 +112,10 @@ set hlsearch
 " search color
 highlight search ctermbg=12
 
+" case insensitive yet smart search
+:set ignorecase
+:set smartcase
+
 " keep N lines of command line history
 set history=5120
 
@@ -151,58 +149,12 @@ filetype indent on
 autocmd BufRead,BufNewFile * filetype indent off
 
 " Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-" YouCompleteMe
-let g:ycm_always_populate_location_list=1
-let g:ycm_filepath_completion_use_working_dir=1
-let g:ycm_complete_in_comments=1
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_extra_conf_globlist = ['~/projects/*','!~/*']
-" default one; one example is under .vim/
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-
-" omni completion
-" set ofu=syntaxcomplete#Complete
-
-" neocomplcache
-" " Disable AutoComplPop.
-" let g:acp_enableAtStartup = 0
-" " Use neocomplcache.
-" let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " Use underbar completion.
-" let g:neocomplcache_enable_underbar_completion = 1
-" " Set minimum syntax keyword length.
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" " Define keyword.
-" if !exists('g:neocomplcache_keyword_patterns')
-"     let g:neocomplcache_keyword_patterns = {}
-" endif
-" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-"
-" " Enable heavy omni completion.
-" if !exists('g:neocomplcache_omni_patterns')
-"   let g:neocomplcache_omni_patterns = {}
-" endif
-" let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-" let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-"
-" " merlin with neocomplcache
-" if !exists('g:neocomplcache_force_omni_patterns')
-"   let g:neocomplcache_force_omni_patterns = {}
-" endif
-" let g:neocomplcache_force_omni_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
-"
 " taglist: auto open
 " let Tlist_Auto_Open = 1
 " let Tlist_Show_Menu = 1
@@ -306,10 +258,6 @@ nmap gh :noh<CR>
 " scala
 " nmap cp :cp<CR>
 " nmap cn :cn<CR>
-
-" YouCompleteMe
-nmap gf :YcmCompleter GoToDefinition<CR>
-nmap gc :YcmCompleter GoToDeclaration<CR>
 
 " F2 in insert mode for paste toggle
 set pastetoggle=<F2>

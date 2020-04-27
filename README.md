@@ -22,13 +22,7 @@ Then install plugins by
 
 ### Additional configurations
 
-YouCompleteMe needs pre compilation. Make sure you have `python-devel g++` and other needed packages installed. You need to install Go 1.11+ (one tutorial for Ubuntu 18.04 - https://www.systutorials.com/how-to-install-go-1-13-x-on-ubuntu-18-04/ ).
-
-Then, build YouCompleteMe by
-
-    cd ~/.vim/bundle/YouCompleteMe/ && ./install.py --clang-completer --go-completer --enable-coverage
-
-If you just want to add support to some more languages, check the `install.py --help` info.
+The auto completion feature uses TabNine free plan which has a limitation on the size of the project. If your project is large, you may need to subscribe to the paid plans to make it work for your projects.
 
 Enjoy.
 
