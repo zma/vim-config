@@ -129,7 +129,7 @@ set backspace=indent,eol,start
 set fileencodings=utf-8,gbk,ucs-bom,latin1
 
 " move cursor by mouse click
-" set mouse=a
+set mouse=a
 
 " set autoread
 
@@ -209,7 +209,7 @@ fun! <SID>StripTrailingWhitespaces()
   endif
 endfun
 
-autocmd FileType c,cpp,go,java,php,ruby,python,vim,cfg,sh,puc autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,go,java,php,ruby,python,vim,cfg,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " ========= Key Shortcuts =========
 nmap W :w<CR>
@@ -270,14 +270,8 @@ map <F2> :e %:p:h<CR>
 " F3 for taglist
 map <F3> :TlistToggle <CR>
 
-" lustyjuggler
-" map <F4> :LustyJuggler <CR>
-" nmap <C-b> :LustyJuggler <CR>
-
 " F4 for spell check with aspell
 map <F4> :w!<CR>:!aspell check %<CR>:e! %<CR>
-
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 " make
 map <F7> :make! <CR> :cwindow <CR>
@@ -285,8 +279,8 @@ map <F7> :make! <CR> :cwindow <CR>
 map <C-F7> :make <CR> :cwindow <CR>
 
 " gen tags in vim
-map <F8>   :!find . -maxdepth 1 -regex '.*\.\(py\<bar>puc\<bar>c0\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
-map <C-F8> :!find .             -regex '.*\.\(py\<bar>puc\<bar>c0\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
+map <F8>   :!find . -maxdepth 1 -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
+map <C-F8> :!find .             -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 
 " number toggle
 map <F9> :let &number=1-&number <CR>
@@ -302,6 +296,13 @@ function SetTab2()
   echo "Set tab to 2 spaces"
 endfunction
 
+function SetTab3()
+  set shiftwidth=3
+  set tabstop=3
+  set softtabstop=3
+  echo "Set tab to 3 spaces"
+endfunction
+
 function SetTab4()
   set shiftwidth=4
   set tabstop=4
@@ -310,6 +311,7 @@ function SetTab4()
 endfunction
 
 map t4 :call SetTab4() <CR>
+map t3 :call SetTab3() <CR>
 map t2 :call SetTab2() <CR>
 
 " ========= End Key Shortcuts =========
@@ -322,8 +324,6 @@ autocmd BufEnter *.cc setf cpp
 autocmd BufEnter *.hpp setf cpp
 " autocmd BufEnter *.h setf cpp
 autocmd BufEnter *.c setf c
-autocmd BufEnter *.c0 setf puc
-autocmd BufEnter *.puc setf puc
 autocmd BufEnter *.tex setf tex
 autocmd BufEnter *.txt setf txt
 autocmd BufEnter *.bib setf bib
@@ -340,7 +340,6 @@ autocmd BufEnter *.go setf go
 autocmd FileType mail call FT_mail()
 autocmd FileType cpp call FT_cpp()
 autocmd FileType c call FT_c()
-autocmd FileType puc call FT_puc()
 autocmd FileType php call FT_php()
 autocmd FileType tex call FT_tex()
 autocmd FileType txt call FT_txt()
@@ -445,7 +444,7 @@ function FT_c()
   setlocal comments-=:// comments+=f://
   " the textwidth is used for formatting the comments
   set textwidth=80
-  set colorcolumn=80
+  " set colorcolumn=80
   set autoindent
   set cindent
   set nospell
@@ -514,7 +513,7 @@ function FT_cpp()
   " disable auto comment for cpp
   setlocal comments-=:// comments+=f://
   setlocal textwidth=80
-  setlocal colorcolumn=80
+  " setlocal colorcolumn=80
 
   setlocal tabstop=3
   setlocal shiftwidth=3
@@ -523,27 +522,19 @@ function FT_cpp()
   setlocal autoindent
   setlocal cindent
   setlocal nospell
-  " no namespace indent
-  " set cino=N-s
   " also handle lambda correctly
   setlocal cino=g-1,j1,(0,ws,Ws,N-s
   call GoogleCppIndent()
+  " no namespace indent
+  " set cino=N-s
+  " do namespace indent
+  set cino=N+s
 endfunction
 
 " syntastic
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 "
 " ------------- End C++ ----------------------------
-
-" ------------------ puc --------------------
-function FT_puc()
-  set textwidth=80
-  set colorcolumn=80
-  set autoindent
-  set cindent
-  set syntax=c
-endfunction
-" ------------------ End puc --------------------
 
 " ------------------ OCaml --------------------
 
