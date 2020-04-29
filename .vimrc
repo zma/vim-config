@@ -31,6 +31,9 @@ Plugin 'Cpp11-Syntax-Support'
 " AI based code autocompletion
 Plugin 'zxqfl/tabnine-vim'
 
+" Code/compiler based autocompletion
+Plugin 'maralla/completor.vim'
+
 Plugin 'jpalardy/vim-slime'
 " Plugin 'jistr/vim-nerdtree-tabs'
 
@@ -71,6 +74,9 @@ syntax on
 
 " pathogen
 " execute pathogen#infect()
+
+" deoplete
+" let g:deoplete#enable_at_startup = 1
 
 " vim autocomplete
 set complete=.,b,u,]
