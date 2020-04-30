@@ -20,12 +20,15 @@ Plugin 'taglist.vim'
 
 Plugin 'The-NERD-tree'
 
-" Plugin 'minibufexpl.vim'
+Plugin 'minibufexpl.vim'
 
-Plugin 'vim-syntastic/syntastic'
+" avoid disabling Syntastic by tabnine/ycm
+let g:ycm_show_diagnostics_ui = 0
 
 " AI based code autocompletion
 Plugin 'zxqfl/tabnine-vim'
+
+Plugin 'vim-syntastic/syntastic'
 
 " for ocaml
 Plugin 'omlet.vim'
@@ -58,8 +61,8 @@ Bundle 'stephpy/vim-php-cs-fixer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
 
+filetype plugin indent on    " required
 
 filetype on
 filetype plugin on
@@ -70,9 +73,9 @@ syntax on
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
 
-" file autocomplete
+" vim command autocomplete
 " set wildmode=longest,list,full
-" set wildmode=longest,list:longest,full
+set wildmode=longest,list:longest,full
 
 set wildmenu
 
@@ -157,9 +160,10 @@ set tags=tags;/
 
 " ==== Start AutoTag Settings =======
 let g:autotags_no_global = 0
-let g:autotags_ctags_opts = "--exclude=target --exclude=vendor"
-let g:autotags_ctags_languages = "+Scala,+Java,+Vim,+C,+CH,+CC,+CPP,+Go"
-let g:autotags_ctags_langmap = "Scala:.scala,Java:.java,Vim:.vim,JavaScript:.js,C:.c,CH:.h,CC:.cc,CPP:cpp,Python:.py,Go:.go"
+" let g:autotags_ctags_opts = "--exclude=target --exclude=vendor"
+let g:autotags_ctags_opts = "--exclude=target"
+let g:autotags_ctags_languages = "+Scala,+Java,+Vim,+C,+CH,+CC,+CPP,+HPP,+Go"
+let g:autotags_ctags_langmap = "Scala:.scala,Java:.java,Vim:.vim,JavaScript:.js,C:.c,CH:.h,CC:.cc,CPP:cpp,HPP:hpp,Python:.py,Go:.go"
 let g:autotags_ctags_global_include = ""
 " ==== End Start AutoTag Settings ===
 
@@ -169,8 +173,6 @@ let g:autotags_ctags_global_include = ""
 set hidden
 
 " syntastic
-" let g:syntastic_check_on_wq = 1
-" highlight SyntasticError term=reverse ctermbg=88
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -179,14 +181,15 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+" highlight SyntasticError term=reverse ctermbg=88
 
 " NERDTree on the right
-" let NERDTreeWinPos="right"
+let NERDTreeWinPos="right"
 
 " Open NERDTree by default
-" autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree
 " after opening the NERDTree, move the cursor to the main window
-" autocmd VimEnter * wincmd p
+autocmd VimEnter * wincmd p
 
 " highlight trailing spaces
 match Todo /\s\+$/
@@ -253,7 +256,8 @@ set pastetoggle=<F2>
 " F2 for NERDTree
 " map <F2> :execute 'NERDTreeTabsToggle'<CR>
 " F2 for openning current file's directory
-map <F2> :e %:p:h<CR>
+" map <F2> :e %:p:h<CR>
+map <F2> :NERDTree <CR>
 
 " F3 for taglist
 map <F3> :TlistToggle <CR>
