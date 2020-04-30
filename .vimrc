@@ -14,35 +14,35 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" plugins
 
-" plugins from http://vim-scripts.org/vim/scripts.html
 Plugin 'AutoTag'
-Plugin 'Syntastic'
 Plugin 'taglist.vim'
+
 Plugin 'The-NERD-tree'
 
-" Plugin 'TinyBufferExplorer'
-Plugin 'omlet.vim'
-Plugin 'minibufexpl.vim'
-Plugin 'Cpp11-Syntax-Support'
+" Plugin 'minibufexpl.vim'
 
-" plugins from github
+Plugin 'vim-syntastic/syntastic'
+
 " AI based code autocompletion
 Plugin 'zxqfl/tabnine-vim'
 
-" Code/compiler based autocompletion
-Plugin 'maralla/completor.vim'
+" for ocaml
+Plugin 'omlet.vim'
 
-Plugin 'jpalardy/vim-slime'
-" Plugin 'jistr/vim-nerdtree-tabs'
+" for C++
+Plugin 'Cpp11-Syntax-Support'
 
+" for PHP
 Plugin '2072/PHP-Indenting-for-VIm'
 
-" Plugin 'fatih/vim-go'
+" for Go
+Plugin 'fatih/vim-go'
 
+" for JS
 Plugin 'pangloss/vim-javascript'
 
+" php-cs-fixer
 let g:php_cs_fixer_path = "~/.vim/tools/php-cs-fixer/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
 let g:php_cs_fixer_level = "symfony"              " which level ?
 let g:php_cs_fixer_config = "default"             " configuration
@@ -56,12 +56,6 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 Bundle 'stephpy/vim-php-cs-fixer'
 
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -72,19 +66,13 @@ filetype plugin on
 
 syntax on
 
-" pathogen
-" execute pathogen#infect()
-
-" deoplete
-" let g:deoplete#enable_at_startup = 1
-
 " vim autocomplete
-set complete=.,b,u,]
+set complete=.,w,b,u,t,i
 set completeopt=menu,preview
 
 " file autocomplete
 " set wildmode=longest,list,full
-set wildmode=longest,list:longest,full
+" set wildmode=longest,list:longest,full
 
 set wildmenu
 
@@ -154,16 +142,10 @@ filetype indent on
 " and leave turning indent on in each language's config in FT_*()
 autocmd BufRead,BufNewFile * filetype indent off
 
-" Trigger configuration. Do not use <tab> if you use
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 " taglist: auto open
-" let Tlist_Auto_Open = 1
-" let Tlist_Show_Menu = 1
+let Tlist_Auto_Open = 1
+let Tlist_Show_Menu = 1
+
 " auto close Tlist window if it is the only window
 let Tlist_Exit_OnlyWindow = 1
 
@@ -186,13 +168,17 @@ let g:autotags_ctags_global_include = ""
 " allow windows to be open in the background
 set hidden
 
-" ------------- LustyJuggler: no warning on vims without Ruby ---------
-let g:LustyJugglerSuppressRubyWarning = 1
-" ------------- End LustyJuggler: no warning on vims without Ruby ---------
-
 " syntastic
+" let g:syntastic_check_on_wq = 1
+" highlight SyntasticError term=reverse ctermbg=88
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-highlight SyntasticError term=reverse ctermbg=88
 
 " NERDTree on the right
 " let NERDTreeWinPos="right"
@@ -241,7 +227,6 @@ let mapleader=","
 " reuse C-p and C-n since moving up/down is usually k/j
 " nmap <C-p> :tabprevious<CR>
 " nmap <C-n> :tabnext<CR>
-" prefer buffers instead of tabs using LustyJuggler
 " these 2 shortcuts used for syntastic
 " buffers
 nmap <C-n> :bnext<CR>
@@ -250,9 +235,6 @@ nmap <C-p> :bprevious<CR>
 nmap <C-e> :bdelete<CR>
 " use C-6
 " nmap <C-m> :b#<CR>
-
-" LustyJuggler: list all buffers
-nmap <C-b> :LustyJuggler<CR>
 
 nmap gn :lprevious<CR>
 nmap gp :lnext<CR>
