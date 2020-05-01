@@ -14,12 +14,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-
-Plugin 'AutoTag'
+" show list of tags
 Plugin 'taglist.vim'
 
-Plugin 'The-NERD-tree'
+" auto tags refresh/generation
+Plugin 'craigemery/vim-autotag'
 
+" a file tree explorer
+Plugin 'preservim/nerdtree'
+
+" show buffers on top
 Plugin 'minibufexpl.vim'
 
 " avoid disabling Syntastic by tabnine/ycm
@@ -28,6 +32,7 @@ let g:ycm_show_diagnostics_ui = 0
 " AI based code autocompletion
 Plugin 'zxqfl/tabnine-vim'
 
+" automatic syntastic checking
 Plugin 'vim-syntastic/syntastic'
 
 " for ocaml
@@ -74,9 +79,6 @@ set complete=.,w,b,u,t,i
 set completeopt=menu,preview
 
 " vim command autocomplete
-" set wildmode=longest,list,full
-set wildmode=longest,list:longest,full
-
 set wildmenu
 
 " show line number
@@ -155,17 +157,6 @@ let Tlist_Exit_OnlyWindow = 1
 " where to find the tags file
 set tags=tags;/
 
-" add std tags
-" set tags+=~/.tags/std
-
-" ==== Start AutoTag Settings =======
-let g:autotags_no_global = 0
-" let g:autotags_ctags_opts = "--exclude=target --exclude=vendor"
-let g:autotags_ctags_opts = "--exclude=target"
-let g:autotags_ctags_languages = "+Scala,+Java,+Vim,+C,+CH,+CC,+CPP,+HPP,+Go"
-let g:autotags_ctags_langmap = "Scala:.scala,Java:.java,Vim:.vim,JavaScript:.js,C:.c,CH:.h,CC:.cc,CPP:cpp,HPP:hpp,Python:.py,Go:.go"
-let g:autotags_ctags_global_include = ""
-" ==== End Start AutoTag Settings ===
 
 " setlocal spell spelllang=en
 
@@ -187,9 +178,12 @@ let g:syntastic_check_on_wq = 1
 let NERDTreeWinPos="right"
 
 " Open NERDTree by default
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " after opening the NERDTree, move the cursor to the main window
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
+
+" close vim if nerdtree is the last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " highlight trailing spaces
 match Todo /\s\+$/
@@ -254,10 +248,9 @@ nmap gh :noh<CR>
 set pastetoggle=<F2>
 
 " F2 for NERDTree
-" map <F2> :execute 'NERDTreeTabsToggle'<CR>
+map <F2> :execute 'NERDTreeToggle'<CR>
 " F2 for openning current file's directory
 " map <F2> :e %:p:h<CR>
-map <F2> :NERDTree <CR>
 
 " F3 for taglist
 map <F3> :TlistToggle <CR>
@@ -271,8 +264,8 @@ map <F7> :make! <CR> :cwindow <CR>
 map <C-F7> :make <CR> :cwindow <CR>
 
 " gen tags in vim
-map <F8>   :!find . -maxdepth 1 -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
-map <C-F8> :!find .             -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
+" map <F8>   :!find . -maxdepth 1 -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
+" map <C-F8> :!find .             -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 
 " number toggle
 map <F9> :let &number=1-&number <CR>
@@ -602,7 +595,6 @@ function FT_javascript()
   filetype indent on
   filetype plugin indent on
 endfunction
-
 
 " ------------------ local config -----------------
 if filereadable($HOME."/.vimrc_local")
