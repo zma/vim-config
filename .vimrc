@@ -23,6 +23,9 @@ Plugin 'craigemery/vim-autotag'
 " a file tree explorer
 Plugin 'preservim/nerdtree'
 
+" show git status in nerdtree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 " show buffers on top
 Plugin 'minibufexpl.vim'
 
@@ -178,9 +181,12 @@ let g:syntastic_check_on_wq = 1
 let NERDTreeWinPos="right"
 
 " Open NERDTree by default
-" autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree
 " after opening the NERDTree, move the cursor to the main window
-" autocmd VimEnter * wincmd p
+autocmd VimEnter * wincmd p
+
+" show hidden files
+let NERDTreeShowHidden=1
 
 " close vim if nerdtree is the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
