@@ -24,7 +24,8 @@ Plugin 'craigemery/vim-autotag'
 Plugin 'preservim/nerdtree'
 
 " show git status in nerdtree
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Has confliction with syntastic. May reenable after it is fixed https://github.com/Xuyuanp/nerdtree-git-plugin/pull/131
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " show buffers on top
 Plugin 'minibufexpl.vim'
