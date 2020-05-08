@@ -153,7 +153,7 @@ autocmd BufRead,BufNewFile * filetype indent off
 
 " taglist: auto open
 let Tlist_Auto_Open = 1
-let Tlist_Show_Menu = 1
+" let Tlist_Show_Menu = 1
 
 " auto close Tlist window if it is the only window
 let Tlist_Exit_OnlyWindow = 1
@@ -182,9 +182,9 @@ let g:syntastic_check_on_wq = 1
 let NERDTreeWinPos="right"
 
 " Open NERDTree by default
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " after opening the NERDTree, move the cursor to the main window
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 
 " show hidden files
 let NERDTreeShowHidden=1
