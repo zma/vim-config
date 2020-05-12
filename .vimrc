@@ -25,7 +25,7 @@ Plugin 'preservim/nerdtree'
 
 " show git status in nerdtree
 " Has confliction with syntastic. May reenable after it is fixed https://github.com/Xuyuanp/nerdtree-git-plugin/pull/131
-" Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " show buffers on top
 Plugin 'minibufexpl.vim'
@@ -37,7 +37,7 @@ let g:ycm_show_diagnostics_ui = 0
 Plugin 'zxqfl/tabnine-vim'
 
 " automatic syntastic checking
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 
 " for ocaml
 Plugin 'omlet.vim'
@@ -173,9 +173,9 @@ set hidden
 " set statusline+=%*
 
 " let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 " highlight SyntasticError term=reverse ctermbg=88
 
 " NERDTree on the right
