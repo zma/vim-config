@@ -346,13 +346,13 @@ autocmd FileType go call FT_go()
 
 function FT_sh()
   set autoindent
-  set colorcolumn=80
+  " set colorcolumn=80
   filetype indent on
   filetype plugin indent on
 endfunction
 
 function FT_python()
-  set colorcolumn=80
+  " set colorcolumn=80
   set autoindent
   filetype indent on
   filetype plugin indent on
@@ -552,7 +552,7 @@ let g:syntastic_ocaml_use_ocamlbuild = 1
 
 function FT_ocaml()
   " set textwidth=80
-  set colorcolumn=80
+  " set colorcolumn=80
   set autoindent
   " must before plugin indent on
   filetype indent on
@@ -597,7 +597,7 @@ endfunction
 
 function FT_javascript()
   " set textwidth=80
-  set colorcolumn=80
+  " set colorcolumn=80
   set autoindent
   filetype indent on
   filetype plugin indent on
