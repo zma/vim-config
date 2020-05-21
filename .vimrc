@@ -18,7 +18,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'taglist.vim'
 
 " auto tags refresh/generation
-Plugin 'craigemery/vim-autotag'
+" Plugin 'craigemery/vim-autotag'
+
+" Rtags support
+Plugin 'lyuts/vim-rtags'
 
 " a file tree explorer
 Plugin 'preservim/nerdtree'
