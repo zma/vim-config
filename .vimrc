@@ -20,9 +20,6 @@ Plugin 'taglist.vim'
 " auto tags refresh/generation
 " Plugin 'craigemery/vim-autotag'
 
-" Rtags support
-Plugin 'lyuts/vim-rtags'
-
 " a file tree explorer
 Plugin 'preservim/nerdtree'
 
@@ -247,6 +244,7 @@ nmap gn :lprevious<CR>
 nmap gp :lnext<CR>
 
 " most of time use Ctrl-[
+
 " use gh to clearn highlight
 nmap gh :noh<CR>
 
