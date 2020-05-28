@@ -79,9 +79,10 @@ filetype plugin on
 syntax on
 
 " GUI configuration
-set guifont=Menlo\ Regular:h14
+set guifont=Menlo\ Regular:h15
 :colorscheme evening
-
+set lines=200
+set columns=160
 " vim autocomplete
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
@@ -519,13 +520,9 @@ function FT_cpp()
   setlocal autoindent
   setlocal cindent
   setlocal nospell
-  " also handle lambda correctly
-  setlocal cino=g-1,j1,(0,ws,Ws,N-s
+  " also handle lambda correctly, with namespace indent
+  setlocal cino+=g-1,j1,(0,ws,Ws,N+s,t0,g0,+0
   call GoogleCppIndent()
-  " no namespace indent
-  " set cino=N-s
-  " do namespace indent
-  set cino=N+s
 endfunction
 
 " syntastic
