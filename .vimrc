@@ -81,6 +81,10 @@ filetype plugin on
 
 syntax on
 
+" GUI configuration
+set guifont=Menlo\ Regular:h14
+:colorscheme evening
+
 " vim autocomplete
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
