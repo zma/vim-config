@@ -79,8 +79,14 @@ filetype plugin on
 syntax on
 
 " GUI only configuration
-if has("gui_running")
-  set guifont=Menlo\ Regular:h15
+if has("gui")
+  let g:os = substitute(system('uname'), '\n', '', '')
+  if g:os == "Darwin"
+    set guifont=Menlo\ Regular:h15
+  else
+    " Linux by default
+    set guifont=Monospace\ Regular\ 13
+  endif
   :colorscheme evening
   set lines=200
   set columns=160
