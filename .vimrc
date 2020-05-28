@@ -78,11 +78,14 @@ filetype plugin on
 
 syntax on
 
-" GUI configuration
-set guifont=Menlo\ Regular:h15
-:colorscheme evening
-set lines=200
-set columns=160
+" GUI only configuration
+if has("gui_running")
+  set guifont=Menlo\ Regular:h15
+  :colorscheme evening
+  set lines=200
+  set columns=160
+endif
+
 " vim autocomplete
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
