@@ -79,7 +79,7 @@ filetype plugin on
 syntax on
 
 " GUI only configuration
-if has("gui")
+if has("gui_running")
   let g:os = substitute(system('uname'), '\n', '', '')
   if g:os == "Darwin"
     set guifont=Menlo\ Regular:h15
