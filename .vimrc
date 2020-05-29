@@ -15,7 +15,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " show list of tags
-Plug 'mtth/taglist.vim'
+Plug 'yegappan/taglist'
 
 " auto tags refresh/generation
 " Plug 'craigemery/vim-autotag'
@@ -29,15 +29,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " show buffers on top
 Plug 'fholgado/minibufexpl.vim'
-
-" avoid disabling Syntastic by tabnine/ycm
-let g:ycm_show_diagnostics_ui = 0
-
-" AI based code autocompletion
-Plug 'zxqfl/tabnine-vim'
-
-" automatic syntastic checking
-" Plug 'vim-syntastic/syntastic'
 
 " for C++
 Plug 'bfrg/vim-cpp-modern'
@@ -65,14 +56,18 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 Plug 'stephpy/vim-php-cs-fixer'
 
-" Language Server Protocol
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+" coc
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-" asyncomplete
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" " avoid disabling Syntastic by tabnine/ycm
+" let g:ycm_show_diagnostics_ui = 0
+"
+" " AI based code autocompletion
+" Plug 'zxqfl/tabnine-vim'
+
+" automatic syntastic checking
+Plug 'vim-syntastic/syntastic'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
@@ -101,6 +96,29 @@ endif
 " vim autocomplete
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
+
+" cod
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " vim command autocomplete
 set wildmenu
@@ -547,37 +565,37 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " ------------------ OCaml --------------------
 
-" ocp-indent with ocp-indent-vim
-let s:opamshare=system("opam config var share | tr -d '\n'")
-execute "autocmd FileType ocaml source ".s:opamshare."/vim/syntax/ocp-indent.vim"
-
-let s:opamshare=system("opam config var share | tr -d '\n'")
-" merlin
-execute "set rtp+=".s:opamshare."/ocamlmerlin/vim"
-execute "set rtp+=".s:opamshare."/ocamlmerlin/vimbufsync"
-
-" merlin with syntastic
-let g:syntastic_ocaml_checkers=['merlin']
-
-" syntastic
-let g:syntastic_ocaml_use_ocamlc = 1
-let g:syntastic_ocaml_use_janestreet_core = 1
-let s:opamlib=system("opam config var lib | tr -d '\n'")
-execute "let g:syntastic_ocaml_janestreet_core_dir = \"".s:opamlib."/core/\""
-let g:syntastic_ocaml_camlp4r = 1
-let g:syntastic_ocaml_use_ocamlbuild = 1
-
-function FT_ocaml()
-  " set textwidth=80
-  " set colorcolumn=80
-  set autoindent
-  " must before plugin indent on
-  filetype indent on
-  filetype plugin indent on
-
-  " merlin with core
-  " execute ":Use core"
-endfunction
+" " ocp-indent with ocp-indent-vim
+" let s:opamshare=system("opam config var share | tr -d '\n'")
+" execute "autocmd FileType ocaml source ".s:opamshare."/vim/syntax/ocp-indent.vim"
+"
+" let s:opamshare=system("opam config var share | tr -d '\n'")
+" " merlin
+" execute "set rtp+=".s:opamshare."/ocamlmerlin/vim"
+" execute "set rtp+=".s:opamshare."/ocamlmerlin/vimbufsync"
+"
+" " merlin with syntastic
+" let g:syntastic_ocaml_checkers=['merlin']
+"
+" " syntastic
+" let g:syntastic_ocaml_use_ocamlc = 1
+" let g:syntastic_ocaml_use_janestreet_core = 1
+" let s:opamlib=system("opam config var lib | tr -d '\n'")
+" execute "let g:syntastic_ocaml_janestreet_core_dir = \"".s:opamlib."/core/\""
+" let g:syntastic_ocaml_camlp4r = 1
+" let g:syntastic_ocaml_use_ocamlbuild = 1
+"
+" function FT_ocaml()
+"   " set textwidth=80
+"   " set colorcolumn=80
+"   set autoindent
+"   " must before plugin indent on
+"   filetype indent on
+"   filetype plugin indent on
+"
+"   " merlin with core
+"   " execute ":Use core"
+" endfunction
 
 " ------------------ End OCaml --------------------
 

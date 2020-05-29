@@ -19,6 +19,14 @@ Then install plugins by
 
 ### Additional configurations
 
+#### Enable TabNine
+
+Run
+
+```
+:CocInstall coc-tabnine
+```
+
 The auto completion feature uses TabNine free plan which has a limitation on the size of the project. If your project is large, you may need to subscribe to the paid plans to make it work for your projects.
 
 To enable semantic auto completion, in Vim, type `TabNine::sem`. You will need to install or enable the language specific tools/features by following the messages from TabNine when you edit files.
