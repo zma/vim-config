@@ -65,6 +65,15 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 Plug 'stephpy/vim-php-cs-fixer'
 
+" Language Server Protocol
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+" asyncomplete
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 " All of your Plugs must be added before the following line
 call plug#end()            " required
 

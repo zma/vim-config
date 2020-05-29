@@ -5,9 +5,6 @@ My Vim configurations.
 
 ## How to use these files
 
-    cd /path/to/vim-config/
-    git submodule update --init --recursive
-
 If you never configured Vim:
 
     cd
@@ -18,7 +15,7 @@ If you ever configured your Vim, you may need to merge my configurations to your
 
 Then install plugins by
 
-    vim +PluginInstall
+    vim +PlugInstall
 
 ### Additional configurations
 
