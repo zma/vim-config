@@ -1,58 +1,58 @@
 " ~/.vimrc
 " Eric Ma, https://www.ericzma.com
 
-" Note: Set up Vundle first
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Set up vim-plugin first
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 
 " show list of tags
-Plugin 'taglist.vim'
+Plug 'taglist.vim'
 
 " auto tags refresh/generation
-" Plugin 'craigemery/vim-autotag'
+" Plug 'craigemery/vim-autotag'
 
 " a file tree explorer
-Plugin 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 
 " show git status in nerdtree
 " Has confliction with syntastic. May reenable after it is fixed https://github.com/Xuyuanp/nerdtree-git-plugin/pull/131
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " show buffers on top
-Plugin 'minibufexpl.vim'
+Plug 'minibufexpl.vim'
 
 " avoid disabling Syntastic by tabnine/ycm
 let g:ycm_show_diagnostics_ui = 0
 
 " AI based code autocompletion
-Plugin 'zxqfl/tabnine-vim'
+Plug 'zxqfl/tabnine-vim'
 
 " automatic syntastic checking
-" Plugin 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 
 " for ocaml
-Plugin 'omlet.vim'
+Plug 'omlet.vim'
 
 " for C++
-Plugin 'Cpp11-Syntax-Support'
+Plug 'Cpp11-Syntax-Support'
 
 " for PHP
-Plugin '2072/PHP-Indenting-for-VIm'
+Plug '2072/PHP-Indenting-for-VIm'
 
 " for Go
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " for JS
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " php-cs-fixer
 let g:php_cs_fixer_path = "~/.vim/tools/php-cs-fixer/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
@@ -68,8 +68,8 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 Bundle 'stephpy/vim-php-cs-fixer'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 
 filetype plugin indent on    " required
 
