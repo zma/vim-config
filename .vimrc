@@ -15,7 +15,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " show list of tags
-Plug 'taglist.vim'
+Plug 'mtth/taglist.vim'
 
 " auto tags refresh/generation
 " Plug 'craigemery/vim-autotag'
@@ -28,7 +28,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " show buffers on top
-Plug 'minibufexpl.vim'
+Plug 'fholgado/minibufexpl.vim'
 
 " avoid disabling Syntastic by tabnine/ycm
 let g:ycm_show_diagnostics_ui = 0
@@ -39,11 +39,8 @@ Plug 'zxqfl/tabnine-vim'
 " automatic syntastic checking
 " Plug 'vim-syntastic/syntastic'
 
-" for ocaml
-Plug 'omlet.vim'
-
 " for C++
-Plug 'Cpp11-Syntax-Support'
+Plug 'bfrg/vim-cpp-modern'
 
 " for PHP
 Plug '2072/PHP-Indenting-for-VIm'
@@ -66,7 +63,7 @@ let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by defaul
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
 
-Bundle 'stephpy/vim-php-cs-fixer'
+Plug 'stephpy/vim-php-cs-fixer'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
