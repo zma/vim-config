@@ -116,6 +116,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <C-p> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -272,7 +273,7 @@ let mapleader=","
 " these 2 shortcuts used for syntastic
 " buffers
 nmap <C-n> :bnext<CR>
-nmap <C-p> :bprevious<CR>
+nmap <C-N> :bprevious<CR>
 
 nmap <C-e> :bdelete<CR>
 " use C-6
