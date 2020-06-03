@@ -97,8 +97,6 @@ endif
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
 
-" cod
-
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -201,7 +199,7 @@ let Tlist_Exit_OnlyWindow = 1
 set tags=tags;/
 
 
-" setlocal spell spelllang=en
+setlocal spell spelllang=en
 
 " allow windows to be open in the background
 set hidden
@@ -247,7 +245,7 @@ endfun
 autocmd FileType c,cpp,go,java,php,ruby,python,vim,cfg,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " ========= Key Shortcuts =========
-nmap W :w<CR>
+nmap S :w<CR>
 nmap Q :q<CR>
 
 " cursor moving between windows
@@ -270,10 +268,10 @@ let mapleader=","
 " reuse C-p and C-n since moving up/down is usually k/j
 " nmap <C-p> :tabprevious<CR>
 " nmap <C-n> :tabnext<CR>
-" these 2 shortcuts used for syntastic
-" buffers
+
+" cursor moving between buffers
+nmap <C-p> :bprevious<CR>
 nmap <C-n> :bnext<CR>
-nmap <C-N> :bprevious<CR>
 
 " nmap <C-e> :bdelete<CR>
 " use C-6
