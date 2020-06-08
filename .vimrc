@@ -191,6 +191,7 @@ autocmd BufRead,BufNewFile * filetype indent off
 " taglist: auto open
 let Tlist_Auto_Open = 1
 " let Tlist_Show_Menu = 1
+let Tlist_Use_Right_Window  = 1
 
 " auto close Tlist window if it is the only window
 let Tlist_Exit_OnlyWindow = 1
@@ -215,8 +216,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " highlight SyntasticError term=reverse ctermbg=88
 
-" NERDTree on the right
-let NERDTreeWinPos="right"
+" NERDTree on the left
+let NERDTreeWinPos="left"
 
 " Open NERDTree by default
 " autocmd VimEnter * NERDTree
