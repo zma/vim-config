@@ -200,7 +200,7 @@ let Tlist_Exit_OnlyWindow = 1
 set tags=tags;/
 
 
-setlocal spell spelllang=en
+" setlocal spell spelllang=en
 
 " allow windows to be open in the background
 set hidden
@@ -357,6 +357,7 @@ autocmd BufEnter *.hpp setf cpp
 autocmd BufEnter *.c setf c
 autocmd BufEnter *.tex setf tex
 autocmd BufEnter *.txt setf txt
+autocmd BufEnter *.md setf md
 autocmd BufEnter *.bib setf bib
 autocmd BufEnter *.php setf php
 autocmd BufEnter *.ml setf ocaml
@@ -374,6 +375,7 @@ autocmd FileType c call FT_c()
 autocmd FileType php call FT_php()
 autocmd FileType tex call FT_tex()
 autocmd FileType txt call FT_txt()
+autocmd FileType md call FT_md()
 autocmd FileType bib call FT_bib()
 autocmd FileType ocaml call FT_ocaml()
 " autocmd FileType scala call FT_scala()
@@ -386,6 +388,7 @@ autocmd FileType go call FT_go()
 function FT_sh()
   set autoindent
   " set colorcolumn=80
+  set nospell
   filetype indent on
   filetype plugin indent on
 endfunction
@@ -446,12 +449,17 @@ function FT_tex()
   " ============= end vim-latex ==============
 endfunction
 
+function FT_md()
+  set spell spelllang=en
+  set fileencodings=iso8859-1,utf-8
+endfunction
+
+
 function FT_txt()
   " set textwidth=68
   " reformat for 80 char lines
   " normal gggqGgg
-  " set spell spelllang=en
-  set nospell
+  set spell spelllang=en
   " setlocal fileencoding=iso8859-1,utf-8
   set fileencodings=iso8859-1,utf-8
 endfunction
