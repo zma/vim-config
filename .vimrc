@@ -357,7 +357,7 @@ autocmd BufEnter *.hpp setf cpp
 autocmd BufEnter *.c setf c
 autocmd BufEnter *.tex setf tex
 autocmd BufEnter *.txt setf txt
-autocmd BufEnter *.md setf md
+autocmd BufEnter *.md setf markdown
 autocmd BufEnter *.bib setf bib
 autocmd BufEnter *.php setf php
 autocmd BufEnter *.ml setf ocaml
@@ -375,7 +375,7 @@ autocmd FileType c call FT_c()
 autocmd FileType php call FT_php()
 autocmd FileType tex call FT_tex()
 autocmd FileType txt call FT_txt()
-autocmd FileType md call FT_md()
+autocmd FileType markdown call FT_markdown()
 autocmd FileType bib call FT_bib()
 autocmd FileType ocaml call FT_ocaml()
 " autocmd FileType scala call FT_scala()
@@ -449,7 +449,7 @@ function FT_tex()
   " ============= end vim-latex ==============
 endfunction
 
-function FT_md()
+function FT_markdown()
   set spell spelllang=en
   set fileencodings=iso8859-1,utf-8
 endfunction
