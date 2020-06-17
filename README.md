@@ -8,8 +8,9 @@ My Vim configurations.
 If you never configured Vim:
 
     cd
-    ln -s /path/to/vim-config/.vimrc ./
-    ln -s /path/to/vim-config/.vim ./
+    ln -s /path/to/vim-config/.vimrc ~/
+    ln -s /path/to/vim-config/.vim ~/
+    ln -s /path/to/vim-config/.vim ~/config/nvim # for neovim
 
 If you ever configured your Vim, you may need to merge my configurations to yours.
 
