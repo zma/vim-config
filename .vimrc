@@ -132,7 +132,9 @@ set number
 " let t:check_vimbackup=system("bash -c \"if [ ! -d ~/.vimbackup ]; then mkdir ~/.vimbackup; fi\"")
 " " keep all backup files in one central dir
 " set backupdir=~/.vimbackup
-set backupcopy=no
+"  if backupcopy is no, vim will change symbolic link file to normal file -
+"  avoid this
+set backupcopy=yes
 
 " Default Tab setting, space is preferred
 set tabstop=2
