@@ -132,7 +132,7 @@ set backup
 let t:check_vimbackup=system("bash -c \"if [ ! -d ~/.vimbackup ]; then mkdir ~/.vimbackup; fi\"")
 " keep all backup files in one central dir
 set backupdir=~/.vimbackup
-set backupcopy=yes
+set backupcopy=no
 
 " Default Tab setting, space is preferred
 set tabstop=2
