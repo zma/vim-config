@@ -125,13 +125,13 @@ set wildmenu
 " show line number
 set number
 
-" backup
-" keep a backup file
-set backup
-" create the vimbackup dir if it does not exist
-let t:check_vimbackup=system("bash -c \"if [ ! -d ~/.vimbackup ]; then mkdir ~/.vimbackup; fi\"")
-" keep all backup files in one central dir
-set backupdir=~/.vimbackup
+" " backup
+" " keep a backup file
+" set backup
+" " create the vimbackup dir if it does not exist
+" let t:check_vimbackup=system("bash -c \"if [ ! -d ~/.vimbackup ]; then mkdir ~/.vimbackup; fi\"")
+" " keep all backup files in one central dir
+" set backupdir=~/.vimbackup
 set backupcopy=no
 
 " Default Tab setting, space is preferred
