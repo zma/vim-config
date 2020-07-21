@@ -362,8 +362,8 @@ autocmd BufEnter *.txt setf txt
 autocmd BufEnter *.md setf markdown
 autocmd BufEnter *.bib setf bib
 autocmd BufEnter *.php setf php
-autocmd BufEnter *.ml setf ocaml
-autocmd BufEnter *.mli setf ocaml
+" autocmd BufEnter *.ml setf ocaml
+" autocmd BufEnter *.mli setf ocaml
 autocmd BufEnter *.scala setf scala
 autocmd BufEnter *.bash setf sh
 autocmd BufEnter *.sh setf sh
@@ -379,7 +379,7 @@ autocmd FileType tex call FT_tex()
 autocmd FileType txt call FT_txt()
 autocmd FileType markdown call FT_markdown()
 autocmd FileType bib call FT_bib()
-autocmd FileType ocaml call FT_ocaml()
+" autocmd FileType ocaml call FT_ocaml()
 " autocmd FileType scala call FT_scala()
 autocmd FileType sh call FT_sh()
 autocmd FileType python call FT_python()
