@@ -184,7 +184,7 @@ set number
 
 " status bar
 set laststatus=2
-" set statusline=%<%t\ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
+set statusline=%<%t\ %=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
 
 " indent settings
 " turn this on to make indent work
