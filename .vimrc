@@ -43,10 +43,8 @@ Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
 
 " for Markdown
-" If you don't have nodejs and yarn
-" use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
-" see: https://github.com/iamcco/markdown-preview.nvim/issues/50
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" If you have nodejs and yarn
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " php-cs-fixer
 let g:php_cs_fixer_path = "~/.vim/tools/php-cs-fixer/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
@@ -206,7 +204,6 @@ let Tlist_Exit_OnlyWindow = 1
 
 " where to find the tags file
 set tags=tags;/
-
 
 " setlocal spell spelllang=en
 
