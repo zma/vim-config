@@ -42,6 +42,10 @@ Plug 'fatih/vim-go'
 " for JS
 Plug 'pangloss/vim-javascript'
 
+" for Markdown
+" If you have nodejs and yarn
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
 " php-cs-fixer
 let g:php_cs_fixer_path = "~/.vim/tools/php-cs-fixer/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
 let g:php_cs_fixer_level = "symfony"              " which level ?
@@ -180,7 +184,7 @@ set number
 
 " status bar
 set laststatus=2
-" set statusline=%<%t\ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
+set statusline=%<%t\ %=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
 
 " indent settings
 " turn this on to make indent work
@@ -200,7 +204,6 @@ let Tlist_Exit_OnlyWindow = 1
 
 " where to find the tags file
 set tags=tags;/
-
 
 " setlocal spell spelllang=en
 
