@@ -194,8 +194,8 @@ filetype indent on
 " and leave turning indent on in each language's config in FT_*()
 autocmd BufRead,BufNewFile * filetype indent off
 
-" taglist: auto open
-let Tlist_Auto_Open = 1
+" taglist: no open by default
+let Tlist_Auto_Open = 0
 " let Tlist_Show_Menu = 1
 let Tlist_Use_Right_Window  = 1
 
