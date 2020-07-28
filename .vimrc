@@ -412,7 +412,7 @@ function FT_python()
 endfunction
 
 function FT_mail()
-  set textwidth=100000000000
+  set textwidth=1000000000
   " reformat for 72 char lines
   " normal gggqGgg
   " settings
@@ -475,7 +475,7 @@ function FT_bib()
 endfunction
 
 function FT_php()
-  set textwidth=100000000000
+  set textwidth=1000000000
   " set textwidth=72
   set noautoindent
   set nocindent
