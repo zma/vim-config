@@ -158,6 +158,9 @@ set hlsearch
 " search color
 highlight search ctermbg=12
 
+" warning/error menu color
+highlight Pmenu ctermbg=231
+
 " case insensitive yet smart search
 :set ignorecase
 :set smartcase
@@ -175,7 +178,7 @@ set backspace=indent,eol,start
 set fileencodings=utf-8,gbk,ucs-bom,latin1
 
 " move cursor by mouse click
-set mouse=a
+" set mouse=a
 
 " set autoread
 
@@ -253,6 +256,7 @@ autocmd FileType c,cpp,go,java,php,ruby,python,vim,cfg,sh autocmd BufWritePre <b
 " ========= Key Shortcuts =========
 nmap S :w<CR>
 nmap Q :q<CR>
+nmap B :bd<CR>
 
 " cursor moving between windows
 nmap <C-h> :wincmd h<CR>
