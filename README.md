@@ -1,7 +1,7 @@
 vim-config
 ==========
 
-A Vim configuration I used by myself. It extends neovim/vim with plugins as follows.
+A Vim configuration I use by myself too with neovim on both Linux and macOS. It extends neovim/vim with plugins as follows.
 
 - junegunn/vim-plug: for plugin management
 - yegappan/taglist: show list of tags
