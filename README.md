@@ -1,28 +1,48 @@
 vim-config
 ==========
 
-My Vim configurations.
+A Vim configuration I used by myself. It extends neovim/vim with plugins as follows.
+
+- junegunn/vim-plug: for plugin management
+- yegappan/taglist: show list of tags
+- craigemery/vim-autotag: auto tags refresh/generation
+- preservim/nerdtree: a file tree explorer
+- Xuyuanp/nerdtree-git-plugin: show git status in nerdtree
+- fholgado/minibufexpl.vim: show buffers on top
+- neoclide/coc.nvim: Intellisense engine, full language server protocol support as VSCode
+- vim-syntastic/syntastic: automatic syntactic checking
+- bfrg/vim-cpp-modern: C++ modern indent style
+- GoogleCppIndent function: indent C++ code in Google C++ style
+- 2072/PHP-Indenting-for-VIm: PHP indent style
+- stephpy/vim-php-cs-fixer: PHP/CSS improvement
+- fatih/vim-go: Go indent style
+- pangloss/vim-javascript: JavaScript indent style
+- iamcco/markdown-preview.nvim: for Markdown preview with `:MarkdownPreview`
 
 ## How to use these files
 
 If you never configured Vim:
 
-    cd
-    ln -s /path/to/vim-config/.vimrc ~/
-    ln -s /path/to/vim-config/.vim ~/
-    ln -s /path/to/vim-config/.vim ~/config/nvim # for neovim
+```
+cd
+ln -s /path/to/vim-config/.vimrc ~/
+ln -s /path/to/vim-config/.vim ~/
+ln -s /path/to/vim-config/.vim ~/config/nvim # for neovim
+```
 
 If you ever configured your Vim, you may need to merge my configurations to yours.
 
-Then install plugins by
+Then install the plugins by running the following command within vim/neovim:
 
-    vim +PlugInstall
+```
+:PlugInstall
+```
 
 ### Additional configurations
 
-#### Enable TabNine
+#### TabNine AI based autocompletion for vim
 
-Run
+To install it, run
 
 ```
 :CocInstall coc-tabnine
@@ -32,22 +52,25 @@ The auto completion feature uses TabNine free plan which has a limitation on the
 
 To enable semantic auto completion, in Vim, type `TabNine::sem`. You will need to install or enable the language specific tools/features by following the messages from TabNine when you edit files.
 
-#### Enable C++ language server support with clangd
+#### Language server support through Coc
 
-Run
+**C++:**
 
 ```
 :CocInstall coc-clangd
 ```
 
-#### Other useful tools
+**Python:**
 
-Run
+```
+:CocInstall coc-python
+```
+
+**JSON:**
 
 ```
 :CocInstall coc-json
 ```
-
 
 Enjoy.
 
