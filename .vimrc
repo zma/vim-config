@@ -287,6 +287,9 @@ nmap <C-n> :bnext<CR>
 " use C-6
 " nmap <C-m> :b#<CR>
 
+" cursor moving back
+:nnoremap <C-T> <C-O>
+
 nmap gn :lprevious<CR>
 nmap gp :lnext<CR>
 
