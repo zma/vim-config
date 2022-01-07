@@ -56,9 +56,7 @@ To enable semantic auto completion, in Vim, type `TabNine::sem`. You will need t
 
 **C++:**
 
-```
-:CocInstall coc-clangd
-```
+Install `ccls`, such as `brew install ccls` for MacOS.
 
 **Python:**
 

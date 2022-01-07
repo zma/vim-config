@@ -256,6 +256,7 @@ endfun
 " ========= Key Shortcuts =========
 nmap S :w<CR>
 nmap Q :q<CR>
+" nmap <C-e> :bdelete<CR>
 nmap B :bd<CR>
 
 " cursor moving between windows
@@ -283,7 +284,6 @@ let mapleader=","
 nmap <C-p> :bprevious<CR>
 nmap <C-n> :bnext<CR>
 
-nmap <C-e> :bdelete<CR>
 " use C-6
 " nmap <C-m> :b#<CR>
 
