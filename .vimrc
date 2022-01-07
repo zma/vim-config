@@ -251,7 +251,7 @@ fun! <SID>StripTrailingWhitespaces()
   endif
 endfun
 
-autocmd FileType c,cpp,go,java,php,ruby,python,vim,cfg,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+" autocmd FileType c,cpp,go,java,php,ruby,python,vim,cfg,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " ========= Key Shortcuts =========
 nmap S :w<CR>
@@ -283,7 +283,7 @@ let mapleader=","
 nmap <C-p> :bprevious<CR>
 nmap <C-n> :bnext<CR>
 
-" nmap <C-e> :bdelete<CR>
+nmap <C-e> :bdelete<CR>
 " use C-6
 " nmap <C-m> :b#<CR>
 
