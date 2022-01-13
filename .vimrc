@@ -24,7 +24,6 @@ Plug 'yegappan/taglist'
 Plug 'preservim/nerdtree'
 
 " show git status in nerdtree
-" Has confliction with syntastic. May reenable after it is fixed https://github.com/Xuyuanp/nerdtree-git-plugin/pull/131
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " show buffers on top
@@ -71,7 +70,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'zxqfl/tabnine-vim'
 
 " automatic syntastic checking
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
