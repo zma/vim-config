@@ -179,6 +179,9 @@ set fileencodings=utf-8,gbk,ucs-bom,latin1
 " move cursor by mouse click
 " set mouse=a
 
+" disable mouse
+set mouse=
+
 " set autoread
 
 " show line number
