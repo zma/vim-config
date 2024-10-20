@@ -16,59 +16,12 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" show list of tags
-Plug 'yegappan/taglist'
-
-" auto tags refresh/generation
-" Plug 'craigemery/vim-autotag'
-
-" a file tree explorer
-Plug 'preservim/nerdtree'
-
-" show git status in nerdtree
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " show buffers on top
 Plug 'fholgado/minibufexpl.vim'
-
-" for C++
-Plug 'bfrg/vim-cpp-modern'
-
-" for PHP
-Plug '2072/PHP-Indenting-for-VIm'
-
-" for Go
-Plug 'fatih/vim-go'
-
-" for JS
-Plug 'pangloss/vim-javascript'
 
 " for Markdown
 " If you have nodejs and yarn
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-
-" php-cs-fixer
-let g:php_cs_fixer_path = "~/.vim/tools/php-cs-fixer/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
-let g:php_cs_fixer_level = "symfony"              " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-"let g:php_cs_fixer_config_file = '.php_cs'       " configuration file
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-
-Plug 'stephpy/vim-php-cs-fixer'
-
-" " avoid disabling Syntastic by tabnine/ycm
-" let g:ycm_show_diagnostics_ui = 0
-"
-" " AI based code autocompletion
-" Plug 'zxqfl/tabnine-vim'
-
-" automatic syntastic checking
-" Plug 'vim-syntastic/syntastic'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
@@ -184,46 +137,8 @@ filetype indent on
 " and leave turning indent on in each language's config in FT_*()
 autocmd BufRead,BufNewFile * filetype indent off
 
-" taglist: no open by default
-let Tlist_Auto_Open = 0
-" let Tlist_Show_Menu = 1
-let Tlist_Use_Right_Window  = 1
-
-" auto close Tlist window if it is the only window
-let Tlist_Exit_OnlyWindow = 1
-
-" where to find the tags file
-set tags=tags;/
-
-" setlocal spell spelllang=en
-
 " allow windows to be open in the background
 set hidden
-
-" syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-" highlight SyntasticError term=reverse ctermbg=88
-
-" NERDTree on the left
-let NERDTreeWinPos="left"
-
-" Open NERDTree by default
-" autocmd VimEnter * NERDTree
-" after opening the NERDTree, move the cursor to the main window
-" autocmd VimEnter * wincmd p
-
-" show hidden files
-let NERDTreeShowHidden=1
-
-" close vim if nerdtree is the last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " highlight trailing spaces
 match Todo /\s\+$/
@@ -293,25 +208,19 @@ nmap gh :noh<CR>
 " F2 in insert mode for paste toggle
 set pastetoggle=<F2>
 
-" F2 for NERDTree
-map <F2> :execute 'NERDTreeToggle'<CR>
-" F2 for openning current file's directory
-" map <F2> :e %:p:h<CR>
-
-" F3 for taglist
-map <F3> :TlistToggle <CR>
-
 " F4 for spell check with aspell
 map <F4> :w!<CR>:!aspell check %<CR>:e! %<CR>
+
+" spell check highlight background
+hi clear SpellBad
+hi SpellBad cterm=underline
+" Set style for gVim
+hi SpellBad gui=undercurl
 
 " make
 map <F7> :make! <CR> :cwindow <CR>
 " display the output and wait for <CR>
 map <C-F7> :make <CR> :cwindow <CR>
-
-" gen tags in vim
-" map <F8>   :!find . -maxdepth 1 -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
-" map <C-F8> :!find .             -regex '.*\.\(py\<bar>c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\<bar>java\<bar>go\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 
 " number toggle
 map <F9> :let &number=1-&number <CR>
@@ -424,36 +333,12 @@ function FT_tex()
   set spell spelllang=en
   set fileencodings=iso8859-1,utf-8
   " setlocal fileencoding=iso8859-1,utf-8
-
-  " ============= vim-latex ==================
-  " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-  filetype plugin on
-
-  " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-  " can be called correctly.
-  set shellslash
-
-  " IMPORTANT: grep will sometimes skip displaying the file name if you
-  " search in a singe file. This will confuse Latex-Suite. Set your grep
-  " program to always generate a file-name.
-  set grepprg=grep\ -nH\ $*
-
-  " OPTIONAL: This enables automatic indentation as you type.
-  filetype indent on
-
-  " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
-  " to
-  " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-  " The following changes the default filetype back to 'tex':
-  let g:tex_flavor='latex'
-  " ============= end vim-latex ==============
 endfunction
 
 function FT_markdown()
   set spell spelllang=en
   set fileencodings=iso8859-1,utf-8
 endfunction
-
 
 function FT_txt()
   " set textwidth=68
@@ -492,62 +377,6 @@ endfunction
 
 " ------------- C++ ----------------------------
 
-" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
-function! GoogleCppIndent()
-  let l:cline_num = line('.')
-
-  let l:orig_indent = cindent(l:cline_num)
-
-  if l:orig_indent == 0 | return 0 | endif
-
-  let l:pline_num = prevnonblank(l:cline_num - 1)
-  let l:pline = getline(l:pline_num)
-  if l:pline =~# '^\s*template' | return l:pline_indent | endif
-
-  " TODO: I don't know to correct it:
-  " namespace test {
-  " void
-  " ....<-- invalid cindent pos
-  "
-  " void test() {
-  " }
-  "
-  " void
-  " <-- cindent pos
-  if l:orig_indent != &shiftwidth | return l:orig_indent | endif
-
-  let l:in_comment = 0
-  let l:pline_num = prevnonblank(l:cline_num - 1)
-  while l:pline_num > -1
-    let l:pline = getline(l:pline_num)
-    let l:pline_indent = indent(l:pline_num)
-
-    if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
-      let l:in_comment = 1
-    elseif l:in_comment == 1
-      if l:pline =~ '/\*\(.\{-}\*/\)\@!'
-        let l:in_comment = 0
-      endif
-    elseif l:pline_indent == 0
-      if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
-        if l:pline =~# '^\s*namespace.*'
-          return 0
-        else
-          return l:orig_indent
-        endif
-      elseif l:pline =~# '\\$'
-        return l:orig_indent
-      endif
-    else
-      return l:orig_indent
-    endif
-
-    let l:pline_num = prevnonblank(l:pline_num - 1)
-  endwhile
-
-  return l:orig_indent
-endfunction
-
 function FT_cpp()
   " disable auto comment for cpp
   setlocal comments-=:// comments+=f://
@@ -563,64 +392,9 @@ function FT_cpp()
   setlocal nospell
   " also handle lambda correctly, with namespace indent
   setlocal cino+=g-1,j1,(0,ws,Ws,N+s,t0,g0,+0
-  call GoogleCppIndent()
 endfunction
 
-" syntastic
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-"
 " ------------- End C++ ----------------------------
-
-" ------------------ OCaml --------------------
-
-" " ocp-indent with ocp-indent-vim
-" let s:opamshare=system("opam config var share | tr -d '\n'")
-" execute "autocmd FileType ocaml source ".s:opamshare."/vim/syntax/ocp-indent.vim"
-"
-" let s:opamshare=system("opam config var share | tr -d '\n'")
-" " merlin
-" execute "set rtp+=".s:opamshare."/ocamlmerlin/vim"
-" execute "set rtp+=".s:opamshare."/ocamlmerlin/vimbufsync"
-"
-" " merlin with syntastic
-" let g:syntastic_ocaml_checkers=['merlin']
-"
-" " syntastic
-" let g:syntastic_ocaml_use_ocamlc = 1
-" let g:syntastic_ocaml_use_janestreet_core = 1
-" let s:opamlib=system("opam config var lib | tr -d '\n'")
-" execute "let g:syntastic_ocaml_janestreet_core_dir = \"".s:opamlib."/core/\""
-" let g:syntastic_ocaml_camlp4r = 1
-" let g:syntastic_ocaml_use_ocamlbuild = 1
-"
-" function FT_ocaml()
-"   " set textwidth=80
-"   " set colorcolumn=80
-"   set autoindent
-"   " must before plugin indent on
-"   filetype indent on
-"   filetype plugin indent on
-"
-"   " merlin with core
-"   " execute ":Use core"
-" endfunction
-
-" ------------------ End OCaml --------------------
-
-" ------------------ Scala --------------------
-
-" disable syntastic for scala---it is too slow
-" use sbt instead
-let g:syntastic_scala_checkers=['']
-
-" function FT_scala()
-"     set colorcolumn=80
-"     set autoindent
-"     filetype indent on
-"     filetype plugin indent on
-" endfunction
-
-" ------------------ End Scala --------------------
 
 function FT_java()
   set autoindent
