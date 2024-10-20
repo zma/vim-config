@@ -1,5 +1,7 @@
 " ~/.vimrc
-" Eric Ma, https://www.ericzma.com
+"
+" https://github.com/zma/vim-config
+"
 
 set nocompatible
 filetype off
@@ -59,10 +61,6 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 Plug 'stephpy/vim-php-cs-fixer'
 
-" coc
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
 " " avoid disabling Syntastic by tabnine/ycm
 " let g:ycm_show_diagnostics_ui = 0
 "
@@ -100,27 +98,14 @@ endif
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
+" position.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> <C-g> <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " vim command autocomplete
 set wildmenu
@@ -288,6 +273,7 @@ nmap <C-n> :bnext<CR>
 
 " cursor moving back
 :nnoremap <C-T> <C-O>
+:nnoremap <C-[> <C-O>
 
 nmap gn :lprevious<CR>
 nmap gp :lnext<CR>
